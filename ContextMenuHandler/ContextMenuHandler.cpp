@@ -1,3 +1,4 @@
+#include <vector>
 #include "pch.h"
 #include "ContextMenuHandler.h"
 #include "CppHelpers.h"
@@ -173,6 +174,7 @@ IFACEMETHODIMP ContextMenuHandler::InvokeCommand(LPCMINVOKECOMMANDINFO pici)
 	}
 
 	std::wstring Clips = L"";
+	
 	for (auto path : pathList_.GetItems())
 	{
 		if (PathIsDirectoryW(path.c_str()) == 0 && DirOnly) 
@@ -180,10 +182,11 @@ IFACEMETHODIMP ContextMenuHandler::InvokeCommand(LPCMINVOKECOMMANDINFO pici)
 			path = path.substr(0, path.find_last_of('\\'));
 		}
 		path.insert(0, cDelmt).append(cDelmt).append(L"\n");
-		Clips.insert(0, path);
+		Clips.append(path);
 		//MessageBoxW(nullptr, path.c_str(), PRODUCT_NAME_W, MB_OK);	
 	}
-	hlp::CopyToClipboard(nullptr, Clips);
+
+	hlp::CopyToClipboard(nullptr, Clips.substr(0,Clips.length() - 2));
 
 	return S_OK;
 }
