@@ -183,7 +183,7 @@ IFACEMETHODIMP ContextMenuHandler::InvokeCommand(LPCMINVOKECOMMANDINFO pici)
 		}
 		path.insert(0, cDelmt).append(cDelmt).append(L"\n");
 		Clips.append(path);
-		//MessageBoxW(nullptr, path.c_str(), PRODUCT_NAME_W, MB_OK);	
+	
 	}
 
 	hlp::CopyToClipboard(nullptr, Clips.substr(0,Clips.length() - 2));
