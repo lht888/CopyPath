@@ -174,19 +174,19 @@ IFACEMETHODIMP ContextMenuHandler::InvokeCommand(LPCMINVOKECOMMANDINFO pici)
 	}
 
 	std::wstring Clips = L"";
-	
+	std::wstring strNewLine = L"\n";
 	for (auto path : pathList_.GetItems())
 	{
 		if (PathIsDirectoryW(path.c_str()) == 0 && DirOnly) 
 		{
 			path = path.substr(0, path.find_last_of('\\'));
 		}
-		path.insert(0, cDelmt).append(cDelmt).append(L"\n");
+		path.insert(0, cDelmt).append(cDelmt).append(strNewLine);
 		Clips.append(path);
 	
 	}
 
-	hlp::CopyToClipboard(nullptr, Clips.substr(0,Clips.length() - 2));
+	hlp::CopyToClipboard(nullptr, Clips.substr(0,Clips.length() - strNewLine.length()));
 
 	return S_OK;
 }
