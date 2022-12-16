@@ -61,4 +61,4 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define PRODUCT_CLSID_W			L"{AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE}"
+#define PRODUCT_CLSID_W			L"{07708356-135F-422D-B3CB-C08D63A78A20}"
